@@ -48,6 +48,7 @@ transactions, providing a comprehensive solution for effective financial record-
 
 - [ ] Store can have different employees with different roles and authorizations.
 - [ ] stock in store can also be maintained with each product cost price and selling price.
+- [ ] consumer based reporting can also be achieved.
 
 
 ### Entities 
@@ -79,8 +80,22 @@ transactions, providing a comprehensive solution for effective financial record-
   - PaymentType paymentType
   - referenceId
 
-- Report
-  - generateReport() 
+- StoreReport
+  - ReportResult generateReport(date);
+- DailyReport implements Report
+- MonthlyReport implements Report
+- YearlyReport implements Report
+- ReportFactory
+
+- ConsumerReport
+  - ReportResult generateReport(ConsumerType consumerType,Long consumerId)
+- ConsumerReportFactory
+
+- ReportResult
+  - storeId
+  - ReportType reportType
+  - List<Transaction> transactions
+  - String Result Summary 
 
 
    
@@ -98,3 +113,7 @@ transactions, providing a comprehensive solution for effective financial record-
 - ConsumerType
   - STORE
   - CUSTOMER
+- ReportType
+ - DAILY
+ - MONTHLY
+ - YEARLY
