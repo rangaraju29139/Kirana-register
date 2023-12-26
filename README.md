@@ -53,7 +53,7 @@ transactions, providing a comprehensive solution for effective financial record-
 
 ### Entities 
 
-- User
+- Customer
   - id
   - firstName
   - lastName
