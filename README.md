@@ -109,11 +109,12 @@ transactions, providing a comprehensive solution for effective financial record-
   - CASH
   - UPI
   - CARD
-  - ONLINEBANKING
+  - ONLINE_BANKING
 - ConsumerType
   - STORE
   - CUSTOMER
 - ReportType
- - DAILY
- - MONTHLY
- - YEARLY
+  - DAILY
+  - MONTHLY
+  - YEARLY
+  - CONSUMER
