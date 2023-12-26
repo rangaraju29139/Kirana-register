@@ -35,7 +35,7 @@ transactions, providing a comprehensive solution for effective financial record-
 ### Requirements
 
 
-- [ ] creating a store.
+- [] creating a store.
 - [ ] creating a customer/User.
 - [ ] store can be able to create credit / debit transactions.
 - [ ] Transaction can be recorded in both INR and USD.
@@ -48,4 +48,53 @@ transactions, providing a comprehensive solution for effective financial record-
 
 - [ ] Store can have different employees with different roles and authorizations.
 - [ ] stock in store can also be maintained with each product cost price and selling price.
-- [ ] 
+
+
+### Entities 
+
+- User
+  - id
+  - firstName
+  - lastName
+  - email
+  - password
+  - phoneNumber
+
+- Store
+  - id
+  - name
+  - description
+  - CurrencyType operationalCurrency
+  - address
+  - User storeOwner
+  - List<Transaction> transactions;
+  - 
+
+- Transaction
+  - id
+  - description
+  - storeId (transaction happened at)
+  - ConsumerType consumerType
+  - consumerId
+  - PaymentType paymentType
+  - referenceId
+
+- Report
+  - generateReport() 
+
+
+   
+#### Enums 
+
+- CurrencyType
+  - IND
+  - USD
+  
+- PaymentType
+  - CASH
+  - UPI
+  - CARD
+  - ONLINEBANKING
+- ConsumerType
+  - STORE
+  - CUSTOMER
