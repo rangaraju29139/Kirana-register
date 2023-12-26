@@ -27,3 +27,25 @@ transactions, providing a comprehensive solution for effective financial record-
 2. An API for displaying transactions with the capability to group them for daily reports.
 3. You can use a database of your choice SQL or NoSQL.
 4. Tech Stack - JAVA and SpringBoot
+
+
+------------------------------------------------
+
+
+### Requirements
+
+
+- [ ] creating a store.
+- [ ] creating a customer/User.
+- [ ] store can be able to create credit / debit transactions.
+- [ ] Transaction can be recorded in both INR and USD.
+- [ ] type of currency accepted in a store is fixed initially during the store setup while making the transaction we can convert using the currency conversion Api.
+- [ ] A transaction can happen between a store and store or store and customer
+- [ ] Store can able to see the daily report of transactions.
+- [ ] Authentication
+
+### Future Scope of Requirements
+
+- [ ] Store can have different employees with different roles and authorizations.
+- [ ] stock in store can also be maintained with each product cost price and selling price.
+- [ ] 
