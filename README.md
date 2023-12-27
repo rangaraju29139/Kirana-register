@@ -177,3 +177,22 @@ RESPONSE:
 
 201: with created status and response header : http://localhost:8080/api/v1/store/1
 with 1 being the store id created
+
+
+#### get Store
+GET: http://localhost:8080/api/v1/store/1
+BODY:
+RESPONSE:
+status code : 200
+```json
+{
+    "id": 1,
+    "name": "store1",
+    "description": "store1 description",
+    "address": "store1 address",
+    "storeOwnerId": 1,
+    "operationalCurrency": "INR",
+    "balance": 0.0
+}
+```
+
