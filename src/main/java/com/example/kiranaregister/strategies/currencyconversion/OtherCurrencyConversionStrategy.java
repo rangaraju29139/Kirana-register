@@ -10,10 +10,11 @@ public class OtherCurrencyConversionStrategy implements CurrencyConversionStrate
         String URI = "https://api.fxratesapi.com/latest";
         RestTemplate restTemplate = new RestTemplate();
         ConversionRate conversionRates = restTemplate.getForObject(URI,ConversionRate.class);
+        Double toConversionRate = conversionRates.getRates().get(to);
+        Double fromConversionRate = conversionRates.getRates().get(from);
 
         // Left for FutureImplementation
-        return 0.0;
-
+        return (amount*toConversionRate)/fromConversionRate;
 
     }
 }
