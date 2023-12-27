@@ -79,6 +79,7 @@ transactions, providing a comprehensive solution for effective financial record-
   - consumerId
   - PaymentType paymentType
   - referenceId
+  - totalAmount
 
 - StoreReport
   - ReportResult generateReport(date);

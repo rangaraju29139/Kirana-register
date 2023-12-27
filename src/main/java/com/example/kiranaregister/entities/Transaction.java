@@ -41,4 +41,7 @@ public class Transaction {
     private PaymentType paymentType;
 
     private String referenceId;
+
+    @NotNull
+    private double totalAmount;
 }
