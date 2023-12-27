@@ -1,5 +1,6 @@
 package com.example.kiranaregister.services;
 
+import com.example.kiranaregister.entities.Store;
 import com.example.kiranaregister.entities.Transaction;
 import com.example.kiranaregister.entities.enums.ConsumerType;
 import com.example.kiranaregister.repositories.TransactionRepository;
@@ -55,7 +56,7 @@ public class TransactionServiceImplV1 implements TransactionService{
     }
 
     @Override
-    public Optional<List<Transaction>> getAllTransactionsByConsumer(ConsumerType consumerType, Long consumerId) {
-        return Optional.of(transactionRepository.findTransactionsByConsumerTypeAndConsumerId(consumerType,consumerId));
+    public Optional<List<Transaction>> getAllTransactionsAtStoreByConsumer(Store store, ConsumerType consumerType, Long consumerId) {
+        return Optional.of(transactionRepository.findTransactionsByStoreAndConsumerTypeAndConsumerId(store,consumerType,consumerId));
     }
 }

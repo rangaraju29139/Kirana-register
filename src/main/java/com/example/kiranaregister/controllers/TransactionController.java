@@ -60,10 +60,20 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "/api/v1/store/{storeId}/transactions", method=RequestMethod.GET)
-    public ResponseEntity<List<TransactionResponseDto>> getTransactionByStoreId(@PathVariable Long storeId){
+    public ResponseEntity<List<TransactionResponseDto>> getTransactionAtByStoreId(@PathVariable Long storeId){
         Optional<Store> store = storeService.getStore(storeId);
         if(store.isEmpty()) return ResponseEntity.internalServerError().build();
-        Optional<List<Transaction>> transactions = transactionService.getAllTransactionsByConsumer(ConsumerType.STORE,storeId);
+        Optional<List<Transaction>> transactions = transactionService.getAllTransactionsAtStoreByConsumer(store.get(), ConsumerType.STORE,storeId);
+        if(transactions.isEmpty()) return ResponseEntity.notFound().build();
+        List<TransactionResponseDto> resultTransactions = transactions.get().stream().map(TransactionResponseDtoMapper::mapToTransactionResponseDto).collect(Collectors.toList());
+        return ResponseEntity.ok(resultTransactions);
+    }
+
+    @RequestMapping(value = "/api/v1/store/{storeId}/customer/{customerId}/transactions", method=RequestMethod.GET)
+    public ResponseEntity<List<TransactionResponseDto>> getTransactionByStoreIdAndCustomerId(@PathVariable Long storeId,@PathVariable Long customerId){
+        Optional<Store> store = storeService.getStore(storeId);
+        if(store.isEmpty()) return ResponseEntity.internalServerError().build();
+        Optional<List<Transaction>> transactions = transactionService.getAllTransactionsAtStoreByConsumer(store.get(), ConsumerType.STORE,customerId);
         if(transactions.isEmpty()) return ResponseEntity.notFound().build();
         List<TransactionResponseDto> resultTransactions = transactions.get().stream().map(TransactionResponseDtoMapper::mapToTransactionResponseDto).collect(Collectors.toList());
         return ResponseEntity.ok(resultTransactions);
