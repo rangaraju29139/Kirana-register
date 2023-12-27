@@ -95,7 +95,7 @@ transactions, providing a comprehensive solution for effective financial record-
 - ReportResult
   - storeId
   - ReportType reportType
-  - List<Transaction> transactions
+  - List<TransactionResponseDto> transactions
   - String Result Summary 
 
 
