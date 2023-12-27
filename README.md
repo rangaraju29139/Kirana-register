@@ -68,8 +68,7 @@ transactions, providing a comprehensive solution for effective financial record-
   - CurrencyType operationalCurrency
   - address
   - User storeOwner
-  - List<Transaction> transactions;
-  - 
+  - balance
 
 - Transaction
   - id
