@@ -147,7 +147,8 @@ RESPONSE:
 GET: http://localhost:8080/api/v1/customer/id
 id being the id of the customer 
 BODY: 
-RESPONSE: ```json
+RESPONSE: 
+```json
 {
 "id": 1,
 "firstName": "xxxxx",
