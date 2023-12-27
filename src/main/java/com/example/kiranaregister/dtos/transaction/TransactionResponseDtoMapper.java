@@ -14,6 +14,9 @@ public class TransactionResponseDtoMapper {
                 .consumerId(transaction.getConsumerId())
                 .storeId(transaction.getStore().getId())
                 .totalAmount(transaction.getTotalAmount())
+                .createdTime(transaction.getCreatedTime())
+                .currencyType(transaction.getCurrencyType())
+                .transactionType(transaction.getTransactionType())
                 .build();
 
     }

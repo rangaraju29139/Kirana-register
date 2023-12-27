@@ -12,6 +12,9 @@ public class TransactionRequestDtoMapper {
                 .totalAmount(transactionRequestDto.getTotalAmount())
                 .paymentType(transactionRequestDto.getPaymentType())
                 .consumerId(transactionRequestDto.getConsumerId())
+                .currencyType(transactionRequestDto.getCurrencyType())
+                .transactionType(transactionRequestDto.getTransactionType())
+                .referenceId(transactionRequestDto.getReferenceId())
                 .build();
     }
 }

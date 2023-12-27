@@ -1,7 +1,6 @@
 package com.example.kiranaregister.services;
 
 
-import com.example.kiranaregister.dtos.store.StoreResponseDto;
 import com.example.kiranaregister.entities.Store;
 import com.example.kiranaregister.repositories.StoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +16,9 @@ public class StoreServiceImplV1 implements StoreService{
     private StoreRepository storeRepository;
 
     @Override
-    public Store getStore(long id) {
-        Optional<Store> savedStore = storeRepository.findById(id);
-        if(savedStore.isEmpty()) return null;
-        return savedStore.get();
+    public Optional<Store> getStore(long id) {
+        return  storeRepository.findById(id);
+
     }
 
     @Override

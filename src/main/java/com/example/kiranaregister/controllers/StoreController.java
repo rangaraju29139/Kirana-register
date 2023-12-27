@@ -47,7 +47,7 @@ public class StoreController {
 
     @RequestMapping(value = "/api/v1/store/{storeId}", method = RequestMethod.GET)
     public ResponseEntity<StoreResponseDto> getStore(@PathVariable long storeId){
-        Optional<Store> savedStore = Optional.of(storeService.getStore(storeId));
+        Optional<Store> savedStore = storeService.getStore(storeId);
         if(savedStore.isEmpty()) return ResponseEntity.internalServerError().build();
         return ResponseEntity.ok(StoreResponseDtoMapper.mapToStoreResponseDto(savedStore.get()));
     }

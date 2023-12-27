@@ -118,6 +118,9 @@ transactions, providing a comprehensive solution for effective financial record-
   - MONTHLY
   - YEARLY
   - CONSUMER
+- TransactionType
+  - CREDIT
+  - DEBIT
 
 
 

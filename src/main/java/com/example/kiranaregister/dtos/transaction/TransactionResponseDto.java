@@ -2,8 +2,12 @@ package com.example.kiranaregister.dtos.transaction;
 
 
 import com.example.kiranaregister.entities.enums.ConsumerType;
+import com.example.kiranaregister.entities.enums.CurrencyType;
 import com.example.kiranaregister.entities.enums.PaymentType;
+import com.example.kiranaregister.entities.enums.TransactionType;
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -28,4 +32,8 @@ public class TransactionResponseDto {
     private String referenceId;
 
     private double totalAmount;
+    private CurrencyType currencyType;
+    private LocalDateTime createdTime;
+    private TransactionType transactionType;
+
 }

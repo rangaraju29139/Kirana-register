@@ -1,7 +1,9 @@
 package com.example.kiranaregister.dtos.transaction;
 
 import com.example.kiranaregister.entities.enums.ConsumerType;
+import com.example.kiranaregister.entities.enums.CurrencyType;
 import com.example.kiranaregister.entities.enums.PaymentType;
+import com.example.kiranaregister.entities.enums.TransactionType;
 import lombok.*;
 
 @Getter
@@ -13,8 +15,6 @@ import lombok.*;
 public class TransactionRequestDto {
     private String description;
 
-    private Long storeId;
-
     private ConsumerType consumerType;
 
     private Long consumerId;
@@ -23,5 +23,8 @@ public class TransactionRequestDto {
 
     private String referenceId;
 
-    private double totalAmount;
+    private Double totalAmount;
+    private CurrencyType currencyType;
+    private TransactionType transactionType;
+
 }
