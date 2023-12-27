@@ -6,6 +6,7 @@ import com.example.kiranaregister.dtos.transaction.TransactionResponseDto;
 import com.example.kiranaregister.dtos.transaction.TransactionResponseDtoMapper;
 import com.example.kiranaregister.entities.Store;
 import com.example.kiranaregister.entities.Transaction;
+import com.example.kiranaregister.entities.enums.ConsumerType;
 import com.example.kiranaregister.services.CustomerService;
 import com.example.kiranaregister.services.StoreService;
 import com.example.kiranaregister.services.TransactionService;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 public class TransactionController {
@@ -54,5 +57,15 @@ public class TransactionController {
         Optional<Transaction> transaction = transactionService.getTransaction(transactionId).stream().findFirst();
         if(transaction.isEmpty()) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(TransactionResponseDtoMapper.mapToTransactionResponseDto(transaction.get()));
+    }
+
+    @RequestMapping(value = "/api/v1/store/{storeId}/transactions", method=RequestMethod.GET)
+    public ResponseEntity<List<TransactionResponseDto>> getTransactionByStoreId(@PathVariable Long storeId){
+        Optional<Store> store = storeService.getStore(storeId);
+        if(store.isEmpty()) return ResponseEntity.internalServerError().build();
+        Optional<List<Transaction>> transactions = transactionService.getAllTransactionsByConsumer(ConsumerType.STORE,storeId);
+        if(transactions.isEmpty()) return ResponseEntity.notFound().build();
+        List<TransactionResponseDto> resultTransactions = transactions.get().stream().map(TransactionResponseDtoMapper::mapToTransactionResponseDto).collect(Collectors.toList());
+        return ResponseEntity.ok(resultTransactions);
     }
 }
