@@ -119,3 +119,25 @@ transactions, providing a comprehensive solution for effective financial record-
   - MONTHLY
   - YEARLY
   - CONSUMER
+
+
+
+
+## Api Documentation 
+
+
+#### CreateCustomer
+POST: http://localhost:8080/api/v1/customer
+BODY: 
+```json
+{
+    "firstName": "xxxxx",
+    "lastName": "xxxxxxx",
+    "email": "xxxxxx@gmail.com",
+    "phoneNumber": "xxxxx",
+    "password": "xxxxxx"
+}
+```
+
+RESPONSE: 
+201: header: location: http://localhost:8080/api/v1/customer/<id>  # id being the id of the customer created.
