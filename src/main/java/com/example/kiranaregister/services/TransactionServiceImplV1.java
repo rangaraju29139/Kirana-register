@@ -34,7 +34,7 @@ public class TransactionServiceImplV1 implements TransactionService{
 
         if(from.equalsIgnoreCase(to)) {
             totalAmountConverted = amount;
-        }else if(from.equals("USD") || to.equals("INR")){
+        }else if(from.equals("USD") || to.equals("USD")){
             currencyConversion.setCurrencyConversionStrategy(new UsdCurrencyConversionStrategy());
             totalAmountConverted = currencyConversion.convertCurrency(from,to,amount);
         }else{

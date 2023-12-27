@@ -15,9 +15,10 @@ public class UsdCurrencyConversionStrategy implements CurrencyConversionStrategy
         if(from.equalsIgnoreCase("USD") && to.equalsIgnoreCase("INR")){
            return conversionRates.getRates().get(to)*amount;
 
-        }else{
-            return amount/(conversionRates.getRates().get(to));
-
+        }else
+//        if(from.equalsIgnoreCase("INR") && to.equalsIgnoreCase("USD"))
+        {
+            return amount/(conversionRates.getRates().get(from));
         }
     }
 }
