@@ -77,6 +77,7 @@ transactions, providing a comprehensive solution for effective financial record-
   - ConsumerType consumerType
   - consumerId
   - PaymentType paymentType
+  - CurrencyType currencyType
   - referenceId
   - totalAmount
 
@@ -118,6 +119,9 @@ transactions, providing a comprehensive solution for effective financial record-
   - MONTHLY
   - YEARLY
   - CONSUMER
+- TransactionType
+  - CREDIT
+  - DEBIT
 
 
 
@@ -195,4 +199,94 @@ status code : 200
     "balance": 0.0
 }
 ```
+
+#### Create Transaction
+POST: http://localhost:8080/api/v1/store/1/transaction
+Sample Payload: 
+```json
+{
+    "description": "transaction 1 done at store 2",
+    "consumerType": "STORE",
+    "consumerId": 1,
+    "paymentType": "UPI",
+    "totalAmount": 100.0,
+    "currencyType": "EUR",
+    "transactionType": "DEBIT"
+
+}
+```
+Sample Response: 
+201: Header->  Location: http://localhost:8080/api/v1/store/1/transaction/5
+
+
+#### Get TransactionByTransactionId
+GET: http://localhost:8080/api/v1/store/1/transaction/1
+Sample Response:
+```json
+
+{
+    "id": 1,
+    "description": "transaction 1 done at store 2",
+    "storeId": 1,
+    "consumerType": "CUSTOMER",
+    "consumerId": 1,
+    "paymentType": "UPI",
+    "referenceId": null,
+    "totalAmount": 9249.771794328015,
+    "currencyType": "EUR",
+    "createdTime": "2023-12-27T23:32:58.929828",
+    "transactionType": "DEBIT"
+}
+```
+
+
+#### GetAllTransactionsByStoreId
+GET: http://localhost:8080/api/v1/store/1/transactions
+Sample Response:
+
+```json
+
+[
+    {
+        "id": 3,
+        "description": "transaction 1 done at store 2",
+        "storeId": 1,
+        "consumerType": "STORE",
+        "consumerId": 1,
+        "paymentType": "UPI",
+        "referenceId": null,
+        "totalAmount": 9247.38440585943,
+        "currencyType": "EUR",
+        "createdTime": "2023-12-27T23:57:11.723086",
+        "transactionType": "DEBIT"
+    },
+    {
+        "id": 4,
+        "description": "transaction 1 done at store 2",
+        "storeId": 1,
+        "consumerType": "STORE",
+        "consumerId": 1,
+        "paymentType": "UPI",
+        "referenceId": null,
+        "totalAmount": 9247.38440585943,
+        "currencyType": "EUR",
+        "createdTime": "2023-12-27T23:57:13.828684",
+        "transactionType": "DEBIT"
+    },
+    {
+        "id": 5,
+        "description": "transaction 1 done at store 2",
+        "storeId": 1,
+        "consumerType": "STORE",
+        "consumerId": 1,
+        "paymentType": "UPI",
+        "referenceId": null,
+        "totalAmount": 9247.38440585943,
+        "currencyType": "EUR",
+        "createdTime": "2023-12-27T23:57:16.097758",
+        "transactionType": "DEBIT"
+    }
+]
+```
+
 
