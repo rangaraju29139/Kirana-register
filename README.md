@@ -68,8 +68,7 @@ transactions, providing a comprehensive solution for effective financial record-
   - CurrencyType operationalCurrency
   - address
   - User storeOwner
-  - List<Transaction> transactions;
-  - 
+  - balance
 
 - Transaction
   - id
@@ -147,7 +146,8 @@ RESPONSE:
 GET: http://localhost:8080/api/v1/customer/id
 id being the id of the customer 
 BODY: 
-RESPONSE: ```json
+RESPONSE: 
+```json
 {
 "id": 1,
 "firstName": "xxxxx",

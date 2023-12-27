@@ -39,6 +39,8 @@ public class Store {
     @Enumerated(EnumType.STRING)
     private CurrencyType operationalCurrency;
 
+    @NotNull
+    private double balance;
 
 
 
