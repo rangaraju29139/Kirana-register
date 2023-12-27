@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Qualifier("v1")
 public class CustomerServiceImplV1 implements CustomerService{
@@ -17,5 +19,10 @@ public class CustomerServiceImplV1 implements CustomerService{
     public Customer createCustomer(Customer customer) {
         Customer savedCustomer = customerRepository.save(customer);
         return savedCustomer;
+    }
+
+    @Override
+    public Optional<Customer> getCustomer(Long id) {
+        return customerRepository.findById(id);
     }
 }

@@ -3,16 +3,14 @@ package com.example.kiranaregister.controllers;
 import com.example.kiranaregister.dtos.customer.CustomerRequestDto;
 import com.example.kiranaregister.dtos.customer.CustomerRequestDtoMapper;
 import com.example.kiranaregister.dtos.customer.CustomerResponseDto;
+import com.example.kiranaregister.dtos.customer.CustomerResponseDtoMapper;
 import com.example.kiranaregister.entities.Customer;
 import com.example.kiranaregister.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -38,5 +36,12 @@ public class CustomerController {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(customer.getId()).toUri();
         return ResponseEntity.created(location).build();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/api/v1/customer/{id}")
+    public ResponseEntity<CustomerResponseDto> getCustomer(@PathVariable Long id){
+        Optional<Customer> customer = customerService.getCustomer(id);
+        if(customer.isEmpty()) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(CustomerResponseDtoMapper.mapToCustomerResponseDto(customer.get()));
     }
 }

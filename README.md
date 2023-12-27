@@ -140,4 +140,20 @@ BODY:
 ```
 
 RESPONSE: 
-201: header: location: http://localhost:8080/api/v1/customer/<id>  # id being the id of the customer created.
+201: header: location: http://localhost:8080/api/v1/customer/id    # id being the id of the customer created.
+
+
+#### Get Customer 
+GET: http://localhost:8080/api/v1/customer/id
+id being the id of the customer 
+BODY: 
+RESPONSE: ```json
+{
+"id": 1,
+"firstName": "xxxxx",
+"lastName": "xxxxxxxx",
+"email": "xxxxxxxxx@gmail.com",
+"phoneNumber": "xxxxxx"
+}
+
+```
