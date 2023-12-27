@@ -157,3 +157,23 @@ RESPONSE:
 }
 
 ```
+
+
+#### create Store
+POST: http://localhost:8080/api/v1/store
+BODY: 
+```json
+{
+    "name": "store1",
+    "description": "store1 description",
+    "address": "store1 address",
+    "storeOwnerId": 1,
+    "operationalCurrency": "INR"
+    
+}
+```
+
+RESPONSE: 
+
+201: with created status and response header : http://localhost:8080/api/v1/store/1
+with 1 being the store id created
