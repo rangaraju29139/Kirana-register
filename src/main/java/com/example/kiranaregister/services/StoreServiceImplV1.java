@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Qualifier("v1")
 @Service
 public class StoreServiceImplV1 implements StoreService{
@@ -16,7 +18,9 @@ public class StoreServiceImplV1 implements StoreService{
 
     @Override
     public Store getStore(long id) {
-        return null;
+        Optional<Store> savedStore = storeRepository.findById(id);
+        if(savedStore.isEmpty()) return null;
+        return savedStore.get();
     }
 
     @Override
