@@ -42,7 +42,7 @@ transactions, providing a comprehensive solution for effective financial record-
 - [X] Transaction can be recorded in any currency.
 - [X] type of currency accepted in a store is fixed initially during the store setup while making the transaction we can convert using the currency conversion Api.
 - [X] A transaction can happen between a store and store or store and customer
-- [X] Store can able to see the reports based on the time period and consumer of transaction.
+- [X] Store can able to see the reports based on the time period and consumer of transaction through with we can  generate DailyReport,MonthlyReport,YearlyReport or report between two Different Date.
 
 
 
@@ -51,8 +51,12 @@ transactions, providing a comprehensive solution for effective financial record-
 - [ ] Store can have different employees with different roles and authorizations.
 - [ ] stock in store can also be maintained with each product cost price and selling price.
 - [ ] Authentication
+- [ ] Consumer based Reporting like Report of particular store or customer between the time period.
 
 
+#### Note: 
+- Attached the postman collection file in tmp/postman folder
+- Attached the generated java doc in Docs/ folder
 
 ### Entities 
 
