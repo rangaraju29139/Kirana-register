@@ -17,12 +17,16 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Optional;
 
+/**
+ * Handle the request related to store
+ */
 @RestController
 public class StoreController {
 
     private StoreService storeService;
 
     private CustomerService customerService;
+
 
     @Autowired
     public StoreController(@Qualifier("v1") StoreService storeService, @Qualifier("v1") CustomerService customerService){
@@ -31,6 +35,11 @@ public class StoreController {
     }
 
 
+    /**
+     * Handle the creation of store using the storeRequestDto
+     * @param storeRequestDto
+     * @return
+     */
     @RequestMapping(value = "/api/v1/store",method = RequestMethod.POST)
     public ResponseEntity<StoreResponseDto> createStore(@RequestBody StoreRequestDto storeRequestDto){
         Store store = StoreRequestDtoMapper.mapToStore(storeRequestDto);
@@ -44,6 +53,12 @@ public class StoreController {
                 .buildAndExpand(store.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
+
+    /**
+     * Handle the request to get the store with given storeId
+     * @param storeId
+     * @return
+     */
 
     @RequestMapping(value = "/api/v1/store/{storeId}", method = RequestMethod.GET)
     public ResponseEntity<StoreResponseDto> getStore(@PathVariable long storeId){

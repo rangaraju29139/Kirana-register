@@ -3,6 +3,9 @@ package com.example.kiranaregister.strategies.currencyconversion;
 import com.example.kiranaregister.common.currencyconversion.ConversionRate;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * strategy implementaion for currency conversion with USD being part of from/to currency.
+ */
 public class UsdCurrencyConversionStrategy implements CurrencyConversionStrategy{
 
     @Override

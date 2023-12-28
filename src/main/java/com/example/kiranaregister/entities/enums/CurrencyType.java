@@ -1,5 +1,8 @@
 package com.example.kiranaregister.entities.enums;
 
+/**
+ * List of keys for all the currencyTypes across the world
+ */
 public enum CurrencyType {
    USD,
     ADA,

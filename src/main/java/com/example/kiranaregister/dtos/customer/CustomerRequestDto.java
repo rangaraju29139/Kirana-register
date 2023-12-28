@@ -3,6 +3,9 @@ package com.example.kiranaregister.dtos.customer;
 
 import lombok.*;
 
+/**
+ * CustomerRequestDto is a data transfer object to get the info from the endPoint with out directly mapping to the actual customer object.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

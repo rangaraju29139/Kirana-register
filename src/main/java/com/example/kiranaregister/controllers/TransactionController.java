@@ -21,6 +21,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+
+/**
+ * Handles the all Requests related to transactions
+ */
 @RestController
 public class TransactionController {
 
@@ -28,6 +32,13 @@ public class TransactionController {
     private StoreService storeService;
     private CustomerService customerService;
 
+    /**
+     *
+     * @param transactionService
+     * @param storeService
+     * @param customerService
+     * construction to initialize through dependency injection of the respective versions of service implementations
+     */
     @Autowired
     public TransactionController(@Qualifier("v1") TransactionService transactionService, @Qualifier("v1") StoreService storeService,@Qualifier("v1") CustomerService customerService) {
         this.transactionService = transactionService;
@@ -36,6 +47,12 @@ public class TransactionController {
     }
 
 
+    /**
+     * Handle the creation of transaction at particular store id
+     * @param storeId
+     * @param transactionRequestDto
+     * @return
+     */
     @RequestMapping(value = "/api/v1/store/{storeId}/transaction",method= RequestMethod.POST)
     public ResponseEntity<TransactionResponseDto> createTransaction(@PathVariable Long storeId, @RequestBody TransactionRequestDto transactionRequestDto){
         Transaction transaction = TransactionRequestDtoMapper.mapToTransaction(transactionRequestDto);
@@ -50,6 +67,12 @@ public class TransactionController {
         return ResponseEntity.created(location).body(TransactionResponseDtoMapper.mapToTransactionResponseDto(transaction));
     }
 
+    /**
+     * Handles to get the particular transactions at particular store
+     * @param storeId
+     * @param transactionId
+     * @return
+     */
     @RequestMapping(value = "/api/v1/store/{storeId}/transaction/{transactionId}",method = RequestMethod.GET)
     public ResponseEntity<TransactionResponseDto> getTransactionById(@PathVariable Long storeId,@PathVariable Long transactionId){
         Optional<Store> store = storeService.getStore(storeId);
@@ -59,6 +82,11 @@ public class TransactionController {
         return ResponseEntity.ok(TransactionResponseDtoMapper.mapToTransactionResponseDto(transaction.get()));
     }
 
+    /**
+     * handle to retrieve all the transactions at particular store id.
+     * @param storeId
+     * @return
+     */
     @RequestMapping(value = "/api/v1/store/{storeId}/transactions", method=RequestMethod.GET)
     public ResponseEntity<List<TransactionResponseDto>> getTransactionAtByStoreId(@PathVariable Long storeId){
         Optional<Store> store = storeService.getStore(storeId);
@@ -69,11 +97,17 @@ public class TransactionController {
         return ResponseEntity.ok(resultTransactions);
     }
 
+    /**
+     * handles to get the transactions to get the transactinos based on the customer id
+     * @param storeId
+     * @param customerId
+     * @return
+     */
     @RequestMapping(value = "/api/v1/store/{storeId}/customer/{customerId}/transactions", method=RequestMethod.GET)
     public ResponseEntity<List<TransactionResponseDto>> getTransactionByStoreIdAndCustomerId(@PathVariable Long storeId,@PathVariable Long customerId){
         Optional<Store> store = storeService.getStore(storeId);
         if(store.isEmpty()) return ResponseEntity.internalServerError().build();
-        Optional<List<Transaction>> transactions = transactionService.getAllTransactionsAtStoreByConsumer(store.get(), ConsumerType.STORE,customerId);
+        Optional<List<Transaction>> transactions = transactionService.getAllTransactionsAtStoreByConsumer(store.get(), ConsumerType.CUSTOMER,customerId);
         if(transactions.isEmpty()) return ResponseEntity.notFound().build();
         List<TransactionResponseDto> resultTransactions = transactions.get().stream().map(TransactionResponseDtoMapper::mapToTransactionResponseDto).collect(Collectors.toList());
         return ResponseEntity.ok(resultTransactions);

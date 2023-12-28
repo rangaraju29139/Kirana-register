@@ -5,6 +5,9 @@ import com.example.kiranaregister.entities.enums.CurrencyType;
 import lombok.*;
 
 
+/**
+ * StoreRequestDto  is a data transfer object to get the info from the endPoint with out directly mapping to the actual store object.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

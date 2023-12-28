@@ -8,7 +8,9 @@ import com.example.kiranaregister.entities.enums.TransactionType;
 import lombok.*;
 
 import java.time.LocalDateTime;
-
+/**
+ * TransactionResponseDto  is a data transfer object to get the info from the transaction object  with out directly mapping to the actual transaction object.
+ */
 
 @Getter
 @Setter
