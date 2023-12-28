@@ -81,12 +81,8 @@ transactions, providing a comprehensive solution for effective financial record-
   - referenceId
   - totalAmount
 
-- StoreReport
-  - ReportResult generateReport(date);
-- DailyReport implements Report
-- MonthlyReport implements Report
-- YearlyReport implements Report
-- ReportFactory
+
+
 
 - ConsumerReport
   - ReportResult generateReport(ConsumerType consumerType,Long consumerId)
@@ -95,7 +91,7 @@ transactions, providing a comprehensive solution for effective financial record-
 - ReportResult
   - storeId
   - ReportType reportType
-  - List<Transaction> transactions
+  - List<TransactionResponseDto> transactionsList
   - String Result Summary 
 
 
@@ -111,14 +107,13 @@ transactions, providing a comprehensive solution for effective financial record-
   - UPI
   - CARD
   - ONLINE_BANKING
+  - DEBT
 - ConsumerType
   - STORE
   - CUSTOMER
 - ReportType
-  - DAILY
-  - MONTHLY
-  - YEARLY
-  - CONSUMER
+  - STORE_STATEMENT
+  - CONSUMER_STATEMENT
 - TransactionType
   - CREDIT
   - DEBIT
@@ -290,3 +285,45 @@ Sample Response:
 ```
 
 
+#### Store Report
+GET: http://localhost:8080/api/v1/report/STORE_STATEMENT/store/1?fromDate=28122023&toDate=28122023
+RequestParam: 
+fromDate: ddMMyyyy
+toDate: ddMMyyyy
+sample Response: 
+```json
+
+{
+    "storeId": 1,
+    "transactionList": [
+        {
+            "id": 1,
+            "description": "transaction 1 done at store 2",
+            "storeId": 1,
+            "consumerType": "STORE",
+            "consumerId": 1,
+            "paymentType": "UPI",
+            "referenceId": null,
+            "totalAmount": 9258.096496515302,
+            "currencyType": "EUR",
+            "createdTime": "2023-12-28T10:59:53.477128",
+            "transactionType": "DEBIT"
+        },
+        {
+            "id": 2,
+            "description": "transaction 1 done at store 2",
+            "storeId": 1,
+            "consumerType": "STORE",
+            "consumerId": 1,
+            "paymentType": "UPI",
+            "referenceId": null,
+            "totalAmount": 9256.545999820188,
+            "currencyType": "EUR",
+            "createdTime": "2023-12-28T11:00:57.641511",
+            "transactionType": "CREDIT"
+        }
+    ],
+    "reportSummary": "Your Report with Store having id 1 during Thu Dec 28 00:00:00 IST 2023 to Thu Dec 28 00:00:00 IST 2023 is -1.5504966951139068"
+}
+```
+returns status code 204(no content): if there are no transactions made between the time period 

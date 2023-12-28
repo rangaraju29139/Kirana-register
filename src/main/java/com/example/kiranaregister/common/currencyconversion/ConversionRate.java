@@ -11,6 +11,9 @@ import java.util.Map;
 @Builder
 @ToString
 public class ConversionRate {
+    /**
+     * Conversion Rate used to store the data from the api
+     */
 
     private String base;
     private Map<String,Double>  rates;

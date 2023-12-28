@@ -16,16 +16,37 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Optional;
 
+
+/**
+ * Handles all the api requests related to customer
+ */
 @RestController
 public class CustomerController {
 
     private CustomerService customerService;
 
+    /**
+     *
+     * @param customerService
+     * service layer to handle the business logic of customer related api's
+     */
+
+    /**
+     * constructor uses dependency injectsion to get the required version of service implementations
+     *
+     */
     @Autowired
     public CustomerController(@Qualifier("v1") CustomerService customerService){
         this.customerService = customerService;
     }
 
+    /**
+     *
+     * @param customerRequestDto
+     * @return
+     *
+     * Handles creation of customer with customerRequestDto Mapping
+     */
 
 
     @RequestMapping(value = "/api/v1/customer", method = RequestMethod.POST)
@@ -38,8 +59,13 @@ public class CustomerController {
         return ResponseEntity.created(location).build();
     }
 
+
+
     @RequestMapping(method = RequestMethod.GET, value = "/api/v1/customer/{id}")
     public ResponseEntity<CustomerResponseDto> getCustomer(@PathVariable Long id){
+        /**
+         * Handles the get customer request using customer id
+         */
         Optional<Customer> customer = customerService.getCustomer(id);
         if(customer.isEmpty()) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(CustomerResponseDtoMapper.mapToCustomerResponseDto(customer.get()));
