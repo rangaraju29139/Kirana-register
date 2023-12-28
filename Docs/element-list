@@ -1,0 +1,12 @@
+com.example.kiranaregister
+com.example.kiranaregister.common.currencyconversion
+com.example.kiranaregister.common.reports
+com.example.kiranaregister.controllers
+com.example.kiranaregister.dtos.customer
+com.example.kiranaregister.dtos.store
+com.example.kiranaregister.dtos.transaction
+com.example.kiranaregister.entities
+com.example.kiranaregister.entities.enums
+com.example.kiranaregister.repositories
+com.example.kiranaregister.services
+com.example.kiranaregister.strategies.currencyconversion
