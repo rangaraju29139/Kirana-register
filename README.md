@@ -1,4 +1,4 @@
-# Kirana Register
+# Kirana Register 
 ## Problem Statement -
 Develop a backend service designed to empower Kirana stores in managing their
 transaction registers. This service aims to facilitate the daily tracking of all credit and debit
@@ -32,23 +32,26 @@ transactions, providing a comprehensive solution for effective financial record-
 ------------------------------------------------
 
 
-### Requirements
+### Enhanced Requirements
 
 
-- [] creating a store.
-- [ ] creating a customer/User.
-- [ ] store can be able to create credit / debit transactions.
-- [ ] Transaction can be recorded in both INR and USD.
-- [ ] type of currency accepted in a store is fixed initially during the store setup while making the transaction we can convert using the currency conversion Api.
-- [ ] A transaction can happen between a store and store or store and customer
-- [ ] Store can able to see the daily report of transactions.
-- [ ] Authentication
+- [X] creating a store.
+- [X] creating a customer/User.
+- [X] creating a transaction
+- [X] store can be able to create credit / debit transactions.
+- [X] Transaction can be recorded in any currency.
+- [X] type of currency accepted in a store is fixed initially during the store setup while making the transaction we can convert using the currency conversion Api.
+- [X] A transaction can happen between a store and store or store and customer
+- [X] Store can able to see the reports based on the time period and consumer of transaction.
+
+
 
 ### Future Scope of Requirements
 
 - [ ] Store can have different employees with different roles and authorizations.
 - [ ] stock in store can also be maintained with each product cost price and selling price.
-- [ ] consumer based reporting can also be achieved.
+- [ ] Authentication
+
 
 
 ### Entities 
